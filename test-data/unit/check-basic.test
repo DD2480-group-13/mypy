@@ -89,7 +89,7 @@ class B: pass
 [out]
 main:4: error: Argument 1 to "f" has incompatible type "B"; expected "A"
 
-[case testStrictBoolArgumentWithFlag]
+[case testBoolWithFlag]
 # flags: --strict-bool
 def f(x: int) -> int:
     if x:= x > 0:
@@ -97,13 +97,12 @@ def f(x: int) -> int:
     return 0
 f(7)
 
-[case testStrictBoolArgumentWithFlag]
+[case testBoolNoFlag]
 def f(x: int) -> int:
     if x:= x > 0:
         return x  # E: Incompatible return value type (got "bool", expected "int")
     return 0
 f(7)
-
 
 [case testStrictBoolArgumentWithFlag]
 # flags: --strict-bool
