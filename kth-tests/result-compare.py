@@ -6,8 +6,8 @@ expected2=open("mypy_expected_2.txt","r").readlines()
 if len(actual1) == len(expected1):
     error = False
     for i in range(len(actual1)):
-        line1 = actual2[i]
-        line2 = expected2[i]
+        line1 = actual1[i]
+        line2 = expected1[i]
         if line1!=line2:
             error = True
             print("---[ ! ] TEST FAILED---")
@@ -25,9 +25,9 @@ if len(actual1) == len(expected1):
 else: 
     print("TEST FAILED: Number of errors missmatch")
 
-if len(actual1) == len(expected1):
+if len(actual2) == len(expected2):
     error = False
-    for i in range(len(actual1)):
+    for i in range(len(actual2)):
         line1 = actual1[i]
         line2 = expected1[i]
         if line1!=line2:
