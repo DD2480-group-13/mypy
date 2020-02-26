@@ -10,26 +10,12 @@
 -- None expression
 -- ---------------
 
-[case testCaseStrictBoolFlag]
-# flags: --strict-bool
-def f(a: int) -> int:
-    return 1 + a
+[case testCallableLambda]
+f = lambda: None
 
-f(x > 1)
-pass
+if callable(f):
+    f()
+else:
+    f += 5
 
-[case testCaseStrictBool]
-def f(a: int) -> int:
-    return 1 + a
-
-f(x > 1)
-
-[case testNoneSliceBoundsWithStrictOptional]
-# flags: --strict-bool --strict-equality
-from typing import Any
-a = None # type: Any
-a[None:1]
-a[1:None]
-a[None:]
-a[:None]
-[builtins fixtures/slice.pyi]
+[builtins fixtures/callable.pyi]
