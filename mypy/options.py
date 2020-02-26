@@ -21,6 +21,7 @@ PER_MODULE_OPTIONS = {
     "allow_untyped_globals",
     "allow_redefinition",
     "strict_equality",
+    "strict_bool",
     "always_false",
     "always_true",
     "check_untyped_defs",
@@ -165,6 +166,10 @@ class Options:
         # Prohibit equality, identity, and container checks for non-overlapping types.
         # This makes 1 == '1', 1 in ['1'], and 1 is '1' errors.
         self.strict_equality = False
+
+        # Prohibit bools to be used like ints
+        # (2 > 1) cant be used as 1
+        self.strict_bool = False
 
         # Report an error for any branches inferred to be unreachable as a result of
         # type analysis.
