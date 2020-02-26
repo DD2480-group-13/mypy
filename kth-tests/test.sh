@@ -7,8 +7,8 @@ shitty-test.py:28: error: Incompatible return value type (got "int", expected "b
 echo 'Found 2 errors in 1 file (checked 1 source file)'
 echo "-------------------------------------"
 echo 'ACTUAL PRINTS:'
-mypy shitty-test.py
-mypy shitty-test.py > mypy_actual_1.txt
+mypy test-cases.py
+mypy test-cases.py > mypy_actual_1.txt
 echo "====================================="
 echo ''
 echo "======TEST WITH STRICT BOOL FLAG======"
@@ -23,10 +23,10 @@ echo 'shitty-test.py:28: error: Incompatible return value type (got "int", expec
 echo 'Found 2 errors in 1 file (checked 1 source file)'
 echo "-------------------------------------"
 echo 'ACTUAL PRINTS:'
-mypy shitty-test.py --strict-bool
-mypy shitty-test.py > mypy_actual_2.txt
+mypy test-cases.py --strict-bool
+mypy test-cases.py > mypy_actual_2.txt
 echo "====================================="
 echo ""
-#python3 result-compare.py
+python3 result-compare.py
 
 
