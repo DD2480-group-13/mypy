@@ -3,6 +3,8 @@ actual2=open("mypy_actual_2.txt","r").readlines()
 expected1=open("mypy_expected_1.txt","r").readlines()
 expected2=open("mypy_expected_2.txt","r").readlines()
 
+print("========!RESULTS!========")
+
 if len(actual1) == len(expected1):
     error = False
     for i in range(len(actual1)):
@@ -20,10 +22,10 @@ if len(actual1) == len(expected1):
             print("")
             break
         if error == False:
-            print("NO FLAG TESTS SUCCESS!")
+            print("Without flag tests SUCCESS!\n")
             error = True
 else: 
-    print("TEST FAILED: Number of errors missmatch")
+    print("[!]TEST FAILED: Number of errors missmatch\n")
 
 if len(actual2) == len(expected2):
     error = False
@@ -41,7 +43,9 @@ if len(actual2) == len(expected2):
             print("-----------------------")
             break
         if error == False:
-            print("WITH FLAG TESTS SUCCESS!")
+            print("With strict bool flag SUCCESS!")
             error = True
 else: 
-    print("TEST FAILED: Number of errors missmatch")
+    print("[!]TEST FAILED: Number of errors missmatch")
+
+print("=========================")
