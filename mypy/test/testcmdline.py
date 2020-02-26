@@ -22,8 +22,9 @@ python3_path = sys.executable
 
 # Files containing test case descriptions.
 cmdline_files = [
-    'cmdline.test',
-    'reports.test',
+    #'cmdline.test',
+    #'reports.test',
+    'check-strict-bool.test',
 ]
 
 
