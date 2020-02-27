@@ -53,8 +53,11 @@ def is_subtype(left: Type, right: Type,
                ignore_declared_variance: bool = False,
                ignore_promotions: bool = False) -> bool:
 
-    if str(left) == "builtins.bool" and str(right) == "builtins.int":
+    if str(left) == "builtins.bool" or \
+            str(left) == "Literal[True]?" or \
+            str(left) == "Literal[False]?" and str(right) == "builtins.int":
         return False
+
 
     """Is 'left' subtype of 'right'?
 
