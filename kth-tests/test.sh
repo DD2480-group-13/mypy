@@ -24,7 +24,7 @@ echo 'Found 2 errors in 1 file (checked 1 source file)'
 echo "-------------------------------------"
 echo 'ACTUAL PRINTS:'
 mypy test-cases.py --strict-bool
-mypy test-cases.py > mypy_actual_2.txt
+mypy test-cases.py --strict-bool > mypy_actual_2.txt
 echo "====================================="
 echo ""
 python3 result-compare.py

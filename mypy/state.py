@@ -6,12 +6,15 @@ from typing import Optional, Tuple, Iterator
 
 # Value varies by file being processed
 strict_optional = False
+strict_bool = False
+
 find_occurrences = None  # type: Optional[Tuple[str, str]]
 
 
 @contextmanager
 def strict_optional_set(value: bool) -> Iterator[None]:
     global strict_optional
+    global strict_bool
     saved = strict_optional
     strict_optional = value
     yield

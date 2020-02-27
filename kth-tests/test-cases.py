@@ -15,7 +15,3 @@ f3()
 def f4(x: int) -> int:
     return (x > 0)
 f4(7)
-
-def f5(x: int) -> int:
-    return (x > 0)
-f5(-5)  # E: Argument 1 to "f" has incompatible type "bool"; expected "int"

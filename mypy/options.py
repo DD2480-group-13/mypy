@@ -25,6 +25,7 @@ PER_MODULE_OPTIONS = {
     "always_true",
     "check_untyped_defs",
     "debug_cache",
+    "strict_bool",
     "disallow_any_decorated",
     "disallow_any_explicit",
     "disallow_any_expr",
@@ -165,6 +166,10 @@ class Options:
         # Prohibit equality, identity, and container checks for non-overlapping types.
         # This makes 1 == '1', 1 in ['1'], and 1 is '1' errors.
         self.strict_equality = False
+
+        # Prohibit bools to be used like ints
+        # (2 > 1) cant be used as 1
+        self.strict_bool = False
 
         # Report an error for any branches inferred to be unreachable as a result of
         # type analysis.

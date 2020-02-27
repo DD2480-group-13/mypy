@@ -224,7 +224,6 @@ def infer_python_executable(options: Options,
 HEADER = """%(prog)s [-h] [-v] [-V] [more options; see below]
             [-m MODULE] [-p PACKAGE] [-c PROGRAM_TEXT] [files ...]"""  # type: Final
 
-
 DESCRIPTION = """
 Mypy is a program that will type check your Python code.
 
@@ -254,7 +253,6 @@ FOOTER = """Environment variables:
 
 
 class CapturableArgumentParser(argparse.ArgumentParser):
-
     """Override ArgumentParser methods that use sys.stdout/sys.stderr directly.
 
     This is needed because hijacking sys.std* is not thread-safe,
@@ -308,7 +306,6 @@ class CapturableArgumentParser(argparse.ArgumentParser):
 
 
 class CapturableVersionAction(argparse.Action):
-
     """Supplement CapturableArgumentParser to handle --version.
 
     This is nearly identical to argparse._VersionAction except,
@@ -511,7 +508,7 @@ def process_options(args: List[str],
         help='Disallow explicit Any in type positions')
     add_invertible_flag('--disallow-any-generics', default=False, strict_flag=True,
                         help='Disallow usage of generic types that do not specify explicit type '
-                        'parameters', group=disallow_any_group)
+                             'parameters', group=disallow_any_group)
     add_invertible_flag('--disallow-subclassing-any', default=False, strict_flag=True,
                         help="Disallow subclassing values of type 'Any' when defining classes",
                         group=disallow_any_group)
@@ -524,11 +521,11 @@ def process_options(args: List[str],
                     "type of 'Any'.")
     add_invertible_flag('--disallow-untyped-calls', default=False, strict_flag=True,
                         help="Disallow calling functions without type annotations"
-                        " from functions with type annotations",
+                             " from functions with type annotations",
                         group=untyped_group)
     add_invertible_flag('--disallow-untyped-defs', default=False, strict_flag=True,
                         help="Disallow defining functions without type annotations"
-                        " or with incomplete type annotations",
+                             " or with incomplete type annotations",
                         group=untyped_group)
     add_invertible_flag('--disallow-incomplete-defs', default=False, strict_flag=True,
                         help="Disallow defining functions with incomplete type annotations",
@@ -604,6 +601,11 @@ def process_options(args: List[str],
 
     add_invertible_flag('--strict-equality', default=False, strict_flag=True,
                         help="Prohibit equality, identity, and container checks for"
+                             " non-overlapping types",
+                        group=strictness_group)
+
+    add_invertible_flag('--strict-bool', default=False, strict_flag=True,
+                        help="Force strict bool checks"
                              " non-overlapping types",
                         group=strictness_group)
 
@@ -860,6 +862,9 @@ def process_options(args: List[str],
     if overlap:
         parser.error("You can't make a variable always true and always false (%s)" %
                      ', '.join(sorted(overlap)))
+
+    if options.strict_bool:
+        state.strict_bool = True
 
     # Set build flags.
     if options.strict_optional_whitelist is not None:
