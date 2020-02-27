@@ -22,8 +22,9 @@ if len(actual1) == len(expected1):
             print("")
             break
         if error == False:
-            print("Without flag tests SUCCESS!\n")
+            print("[:)]SUCCESS: Without flag tests\n")
             error = True
+            break
 else: 
     print("[!]TEST FAILED: Number of errors missmatch\n")
 
@@ -43,8 +44,9 @@ if len(actual2) == len(expected2):
             print("-----------------------")
             break
         if error == False:
-            print("With strict bool flag SUCCESS!")
+            print("[:)]SUCCESS: With strict bool flag")
             error = True
+            break
 else: 
     print("[!]TEST FAILED: Number of errors missmatch")
 
